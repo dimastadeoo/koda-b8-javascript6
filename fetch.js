@@ -1,6 +1,7 @@
 fetch("https://jsonplaceholder.typicode.com/users")
 .then((res) =>{
     res.json().then((aksi) =>{
+        console.log("----------------------------------------------")
         console.log("Data Email menggunakan then-catch :")
         lowerCaseEmail(aksi)
         console.log("----------------------------------------------")
