@@ -1,8 +1,9 @@
 fetch("https://jsonplaceholder.typicode.com/users")
 .then((res) =>{
     res.json().then((aksi) =>{
-        console.log("Data Email menggunakan then-catch ")
+        console.log("Data Email menggunakan then-catch :")
         lowerCaseEmail(aksi)
+        console.log("----------------------------------------------")
     })
 }).catch(()=>{
     console.log("Eror Internet Mati")
@@ -13,8 +14,11 @@ async function getEmail() {
     try{
         const response = await fetch(url)
         const result = await response.json()
+        console.log("----------------------------------------------")
         console.log("Data Email menggunakan Async-: ")
         lowerCaseEmail(result) 
+        console.log("----------------------------------------------")
+
     }catch{
        console.log("Eror Internet Mati") 
     }
@@ -24,13 +28,12 @@ getEmail()
 
 
 function lowerCaseEmail(aksi) {
-  aksi.forEach(item => {
-    let email=[]
-    if (typeof item.email === 'string') {
-        item.email = item.email.toLowerCase()
-        email.push(item.email)
+    let i = 0;
+    let email =[]
+    while (i < aksi.length) {
+        aksi[i].email = aksi[i].email.toLowerCase()
+        email.push(aksi[i].email)
+        i++
     }
     console.log(email)
-  })
-
 }
